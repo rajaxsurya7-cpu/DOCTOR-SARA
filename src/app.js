@@ -88,10 +88,10 @@ class TitanBot extends Client {
       this.once("ready", () => {
         console.log("✅ Bot is ready - joining VC");
         
-        keepVc(this);
+        keepVC(this);
 
         setInterval(() => {
-          keepVc(this);
+          keepVC(this);
           }, 600000);
       });
 
