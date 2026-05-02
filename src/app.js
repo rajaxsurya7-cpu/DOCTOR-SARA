@@ -84,7 +84,16 @@ class TitanBot extends Client {
       startupLog('Logging into Discord...');
       await this.login(this.config.bot.token);
       startupLog('Discord login successful');
-      
+
+      this.once("ready", () => {
+        console.log("✅ Bot is ready - joining VC...");
+        keepVc(this);
+
+        setInterval(() => {
+          keepVc(this);
+          }, 60000);
+      });
+
       startupLog('Registering slash commands...');
       await this.registerCommands();
       startupLog('Slash commands registration complete');
