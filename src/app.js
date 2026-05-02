@@ -1,4 +1,3 @@
-import { keepVC } from "./voice.js";
 import 'dotenv/config';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { REST } from '@discordjs/rest';
@@ -86,12 +85,13 @@ class TitanBot extends Client {
       startupLog('Discord login successful');
 
       this.once("ready", () => {
-        console.log("✅ Bot is ready - joining VC...");
+        console.log("✅ Bot is ready - joining VC");
+        
         keepVc(this);
 
         setInterval(() => {
           keepVc(this);
-          }, 60000);
+          }, 600000);
       });
 
       startupLog('Registering slash commands...');
